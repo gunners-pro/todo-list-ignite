@@ -21,8 +21,6 @@ main {
   padding: 0 2rem;
 }
 
-.inputData {}
-
 .inputData input {
   border: none;
   width: 100%;
@@ -53,4 +51,38 @@ main {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+}
+
+.infoPanel {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+  padding: 2.4rem 0;
+  border-bottom: 1px solid var(--gray-400);
+  border-radius: 10px;
+}
+
+.infoPanel div {
+  display: flex;
+  justify-content: center;
+}
+
+
+.infoPanel div > span {
+  margin-left: 1rem;
+  background: var(--gray-400);
+  padding: 0.125rem 0.75rem;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.infoPanel div:first-of-type strong {
+  font-weight: bold;
+  color: var(--blue);
+}
+
+.infoPanel div:last-of-type strong {
+  font-weight: bold;
+  color: var(--purple);
 }

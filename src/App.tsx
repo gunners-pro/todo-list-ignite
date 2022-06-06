@@ -19,6 +19,17 @@ function App() {
             <PlusCircle size={18} />
           </button>
         </div>
+
+        <div className={styles.infoPanel}>
+          <div>
+            <strong>Tarefas criadas</strong>
+            <span>0</span>
+          </div>
+          <div>
+            <strong>Concluídas</strong>
+            <span>0</span>
+          </div>
+        </div>
       </main>
     </div>
   )
