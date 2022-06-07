@@ -2,6 +2,7 @@ import { PlusCircle } from 'phosphor-react';
 import imgLogo from './assets/logo.svg';
 import styles from './app.module.css';
 import { NothingTodos } from './components/NothingTodos';
+import { TodoList } from './components/TodoList';
 
 function App() {
   return (
@@ -31,7 +32,7 @@ function App() {
             <span>0</span>
           </div>
         </div>
-        <NothingTodos />
+        <TodoList />
       </main>
     </div>
   )
