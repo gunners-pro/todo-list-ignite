@@ -11,12 +11,10 @@ interface PropsTodoList {
 }
 
 function TodoList({ todos, setTodos, todoTotalDone, setTodoTotalDone }: PropsTodoList){
-
   function handleRemoveTodo(id: string) {
     const updatedTodo = todos.filter(todo => {
       return todo.id !== id
     })
-
     setTodos(updatedTodo)
     const updatedTodoDone = updatedTodo.reduce((acc, todo) => {
       if(todo.done) {
@@ -24,9 +22,7 @@ function TodoList({ todos, setTodos, todoTotalDone, setTodoTotalDone }: PropsTod
       }
       return acc
     }, 0)
-
     setTodoTotalDone(updatedTodoDone)
-
   }
 
   return(
@@ -40,7 +36,6 @@ function TodoList({ todos, setTodos, todoTotalDone, setTodoTotalDone }: PropsTod
                 id={todo.id}
                 defaultChecked={todo.done}
                 onChange={(event) => {
-
                   const changeTodos = todos.map(changeTodo => {
                     if(changeTodo.id === todo.id) {
                       changeTodo.done = event.target.checked

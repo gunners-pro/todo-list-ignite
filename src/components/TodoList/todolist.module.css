@@ -27,11 +27,13 @@ section {
 
 .customCheck:hover label::before {
   border-color: var(--blue-dark);
+  cursor: pointer;
 }
 
 .customCheck:hover label::after {
   background-color: var(--purple-dark);
   border-color: var(--purple-dark);
+  cursor: pointer;
 }
 
 .customCheck > input {
@@ -82,6 +84,7 @@ section {
   font-size: 1.4rem;
   line-height: 1.4;
   text-align: justify;
+  word-break: break-all;
 }
 
 .todoItem button {

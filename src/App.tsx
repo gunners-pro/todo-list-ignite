@@ -13,16 +13,7 @@ export interface PropsTodos {
 }
 
 function App() {
-  const [todos, setTodos] = useState<PropsTodos[]>([{
-    id: "sfdgs2g24gfd4g",
-    content: "Primeira tarefa",
-    done: true,
-  },
-  {
-    id: "hkjfhjfhj123456",
-    content: "Segunda tarefa",
-    done: false,
-  }])
+  const [todos, setTodos] = useState<PropsTodos[]>([])
   const [newTodo, setNewTodo] = useState('')
   const [todoTotalDone, setTodoTotalDone] = useState(() => {
     return todos.reduce((acc, todo) => {
@@ -34,8 +25,11 @@ function App() {
   })
 
   function handleAddNewTodo() {
-    setTodos([...todos, { id: uuidV4(), content: newTodo, done: false }])
-
+    if(newTodo.length <= 0) {
+      alert('Preencha o campo nova tarefa')
+    } else {
+      setTodos([...todos, { id: uuidV4(), content: newTodo, done: false }])
+    }
     setNewTodo('')
   }
 
