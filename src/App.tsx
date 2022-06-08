@@ -24,6 +24,14 @@ function App() {
     done: false,
   }])
   const [newTodo, setNewTodo] = useState('')
+  const [todoTotalDone, setTodoTotalDone] = useState(() => {
+    return todos.reduce((acc, todo) => {
+      if(todo.done) {
+        acc++
+      }
+      return acc;
+    }, 0)
+  })
 
   function handleAddNewTodo() {
     setTodos([...todos, { id: uuidV4(), content: newTodo, done: false }])
@@ -53,15 +61,24 @@ function App() {
         <div className={styles.infoPanel}>
           <div>
             <strong>Tarefas criadas</strong>
-            <span>0</span>
+            <span>{todos.length}</span>
           </div>
           <div>
             <strong>Concluídas</strong>
-            <span>0</span>
+            <span>{todoTotalDone} de {todos.length}</span>
           </div>
         </div>
         {
-          todos.length < 1 ? (<NothingTodos />) : (<TodoList todos={todos} setTodos={setTodos} />)
+          todos.length < 1 ? (
+            <NothingTodos />
+          ) : (
+          <TodoList
+            todos={todos}
+            setTodos={setTodos}
+            setTodoTotalDone={setTodoTotalDone}
+            todoTotalDone={todoTotalDone}
+          />
+            )
         }
       </main>
     </div>
