@@ -2,6 +2,17 @@ section {
   margin-top: 3rem;
 }
 
+@keyframes entrance {
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
 .todoItem {
   display: flex;
   align-items: center;
@@ -11,6 +22,7 @@ section {
   border-radius: 8px;
   padding: 1.2rem;
   margin-bottom: 2rem;
+  animation: entrance 1s;
 }
 
 .customCheck:hover label::before {

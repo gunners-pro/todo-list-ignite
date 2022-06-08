@@ -1,10 +1,36 @@
 import { PlusCircle } from 'phosphor-react';
+import { v4 as uuidV4 } from 'uuid'
 import imgLogo from './assets/logo.svg';
 import styles from './app.module.css';
 import { NothingTodos } from './components/NothingTodos';
 import { TodoList } from './components/TodoList';
+import { useState } from 'react';
+
+export interface PropsTodos {
+  id: string;
+  content: string;
+  done: boolean;
+}
 
 function App() {
+  const [todos, setTodos] = useState<PropsTodos[]>([{
+    id: "sfdgs2g24gfd4g",
+    content: "Primeira tarefa",
+    done: true,
+  },
+  {
+    id: "hkjfhjfhj123456",
+    content: "Segunda tarefa",
+    done: false,
+  }])
+  const [newTodo, setNewTodo] = useState('')
+
+  function handleAddNewTodo() {
+    setTodos([...todos, { id: uuidV4(), content: newTodo, done: false }])
+
+    setNewTodo('')
+  }
+
   return (
     <div className={styles.page}>
       <header>
@@ -15,8 +41,10 @@ function App() {
           <input
             type="text"
             placeholder="Adicione uma nova tarefa"
+            value={newTodo}
+            onChange={(event) => setNewTodo(event.target.value)}
           />
-          <button type="button">
+          <button type="button" onClick={handleAddNewTodo}>
             Criar
             <PlusCircle size={18} />
           </button>
@@ -32,7 +60,9 @@ function App() {
             <span>0</span>
           </div>
         </div>
-        <TodoList />
+        {
+          todos.length < 1 ? (<NothingTodos />) : (<TodoList todos={todos} setTodos={setTodos} />)
+        }
       </main>
     </div>
   )
